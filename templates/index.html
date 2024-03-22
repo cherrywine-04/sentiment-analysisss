@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipcart Review Sentiment Prediction</title>
+    <style>
+        /* Your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis of Product</h1>
+        <p>Write your review here:</p>
+        <form action="/" method="post" id="reviewForm">
+            <textarea id="review" name="review" placeholder="Enter your review here..." required></textarea><br>
+            <input type="submit" value="Predict">
+        </form>
+        <div id="sentimentResult" class="sentiment" style="display: none;">
+            <p id="sentimentText"> Result:</p>
+            <p id="f1Score"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var review = document.getElementById("review").value;
+
+            // Simulating sentiment analysis result
+            var sentiment = 1;
+            var f1Score = 0.72;
+
+            // Update UI with sentiment analysis result
+            document.getElementById("sentimentText").innerHTML = "Sentiment Analysis Result:";
+            document.getElementById("f1Score").innerHTML = "F1 Score: " + f1Score.toFixed(2);
+
+            // Determine sentiment class and update CSS accordingly
+            var sentimentResultElement = document.getElementById("sentimentResult");
+            sentimentResultElement.style.display = "block";
+            sentimentResultElement.classList.remove("positive", "negative", "neutral");
+            if (sentiment == 1) {
+                sentimentResultElement.classList.add("positive");
+                document.getElementById("sentimentText").innerHTML += " Positive 😊";
+            } else if (sentiment == 0) {
+                sentimentResultElement.classList.add("negative");
+                document.getElementById("sentimentText").innerHTML += " Negative 😞";
+            } else {
+                sentimentResultElement.classList.add("neutral");
+                document.getElementById("sentimentText").innerHTML += " Neutral 😐";
+            }
+        });
+    </script>
+</body>
+
+</html>
