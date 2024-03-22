@@ -18,7 +18,12 @@ nltk.download('wordnet')
 app = Flask(__name__)
 
 # Load the dataset
-df = pd.read_csv('/path/to/cleaned_data.csv')
+import pandas as pd
+
+# Replace '/home/ec2-user/sentiment-analysisss/web scrping, EDA and Modeling/cleaned_data.csv' 
+# with the actual path to your CSV file
+df = pd.read_csv('/home/ec2-user/sentiment-analysisss/web scrping, EDA and Modeling/cleaned_data.csv')
+
 
 # Preprocessing functions
 def clean_text(text):
